@@ -1,5 +1,5 @@
 
-  ## Hiii,   I am Theo <3          ![bunny](https://pin.it/xFwYIrsVi)
+  ## Hiii,   I am Theo <3          
 ___
 
   - learning how to code with 🐍***python***🐍
