@@ -1,11 +1,10 @@
-<body bgcolor="pink">
-  
-## Hiii,   I am Theo <3 
+
+  ## Hiii,   I am Theo <3 
 ___
 
-- learning how to code with 🐍***python***🐍
+  - learning how to code with 🐍***python***🐍
 
-___
+ ___
 
 #### Assigment Overview:
 
@@ -23,8 +22,9 @@ ZZZzz /,`.-'`'    -.  ;-;;,_
      |,4-  ) )-,_. ,\ (  `'-'
     '---''(_/--'  `-'\_)  
 ```
+
+
 [source of the cat](https://www.asciiart.eu/art/541e3ee2d56759f6)
 
-___
 
-</body>
+
