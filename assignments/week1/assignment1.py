@@ -1,4 +1,4 @@
-print("""
+print(r"""
 
            X           X
           XX           XX
