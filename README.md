@@ -9,7 +9,7 @@ ___
 #### Assigment Overview:
 
 - [x] Assigment 1
-- [ ] Assigment 2
+- [x] Assigment 2
 - [ ] Assigment 3
 - [ ] Assigment 4
 - [ ] Assigment 5
