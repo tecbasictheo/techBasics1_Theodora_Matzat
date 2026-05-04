@@ -89,13 +89,13 @@ while var1 == 0:
 
 while var1 == 3:
     print("You are in a long corridor, you see no end")
-    steps = input("How many steps do you wanna take?")
+    steps = input("How many steps do you wanna take? (Please type in numbers)")
     steps = int(steps)
 
-    if steps >= 20 or steps < 70:
-        print("You walk beside a door, that you did not see from the entrance")
+    if steps >= 20 and steps < 70:
+        print("You walk beside a door, that you did not see from the entrance.")
         time.sleep(1)
-        print("You decide to take your chance and take the door")
+        print("You decide to take your chance.")
         var1 = 4
     elif steps < 20:
         print("You walk along the corridor")
@@ -103,7 +103,7 @@ while var1 == 3:
         print("...")
     else:
         print("You walk along the corridor and see no end.")
-        print("Please try again")
+        print("Please try again.")
     time.sleep(1)
 
 while var1 == 4:
@@ -147,7 +147,7 @@ while var1 == 6:
         print ("You are in a long corridor, you see no end")
         var1 = 8
         while var1 == 8:
-            steps2 = input("How many steps do you wanna take?")
+            steps2 = input("How many steps do you wanna take? (Please type in numbers)")
             steps2 = int(steps2)
             if steps2 == 0:
                     print("You stand in  place")
