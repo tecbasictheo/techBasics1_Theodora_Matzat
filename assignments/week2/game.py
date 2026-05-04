@@ -178,8 +178,7 @@ while var1 == 9:
             time.sleep(2)
             print ("You are blended by the light")
             time.sleep(2)
-            print("You made it :) ")
-            print("Good Job!")
+            var1 = 10
 
         elif lastdoor == "no" or lastdoor == "NO":
             print("You pass the door")
@@ -201,4 +200,9 @@ while var1 == 7:
     print("You are dead")
     time.sleep(1)
     print ("Try again ;)")
+    exit()
+
+while var1 == 10:
+    print("You made it :) ")
+    print("Good Job!")
     exit()
