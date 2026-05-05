@@ -150,23 +150,23 @@ while var1 == 6:
             steps2 = input("How many steps do you wanna take? (Please type in numbers)")
             steps2 = int(steps2)
             if steps2 == 0:
-                    print("You stand in  place")
-                    time.sleep(1)
-                    print ("...")
-                    print ("Wanna try again?")
-            elif steps2 >= 20 or steps2 < 50:
-                    print("You walk beside a door, that you did not see from the entrance")
-                    var1 = 9
-            elif steps2 < 0:
-                    print("The door is closed, you cannot go back")
-                    print ("Try again")
-            else:
-                print("You run against the wall")
+                print("You stand in place")
                 time.sleep(1)
                 print ("...")
+                print ("Wanna try again?")
+            elif steps2 >= 20 and steps2 < 70:
+                print("You walk beside a door, that you did not see from the entrance.")
                 time.sleep(1)
-                print ("Did you have fun?")
-                print("Try again")
+                print("You decide to take your chance.")
+                var1 = 4
+            elif steps2 < 20:
+                print("You walk along the corridor")
+                time.sleep(1)
+                print("...")
+            else:
+                print("You walk along the corridor and see no end.")
+                print("Please try again.")
+                time.sleep(1)
     else:
         print ("Value not valid, please try again")
 
