@@ -62,7 +62,7 @@ for i, (x, y) in enumerate(flower_positions):
         flower.begin_fill()
         flower.circle(5, 360)
         flower.end_fill()
-        # i couldnt get it to center
+        # it should be centered
     else:
         flower.penup()
         flower.goto(x, y)
