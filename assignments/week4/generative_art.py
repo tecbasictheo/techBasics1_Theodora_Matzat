@@ -15,7 +15,7 @@ flower.speed(0)
 flower.pensize(3)
 #the code
 
-color = ['blue', 'yellow', 'pink', 'red', 'orange']
+color = ['blue', 'yellow', 'pink', 'red', 'orange', 'darkblue', 'violet', 'darkred']
 flower.color = random.choice(color)
 
 flower = Turtle()
@@ -23,12 +23,21 @@ flower.hideturtle()
 flower.speed(0)
 
 flower_positions = [
-    (-100, 100),
-    (100, 150),
-    (-50, -100),
-    (150, -50),
-    (0, 0),
-    (50, 50)
+    (50, 170),
+    (-60, 160),
+    (-150, 98),
+    (-50, 85),
+    (70, 70),
+    (150, 90),
+    (-150, 0),
+    (-50, 0),
+    (50, 0),
+    (150, 0),
+    (-150, -60),
+    (-50, -86),
+    (52, -75),
+    (150, -95),
+
 ]
 
 for i, (x, y) in enumerate(flower_positions):
@@ -38,31 +47,33 @@ for i, (x, y) in enumerate(flower_positions):
 
     def draw_petal():
         flower.begin_fill()
-        flower.circle(100, 60)
+        flower.circle(70, 60)
         flower.left(120)
-        flower.circle(100, 60)
+        flower.circle(70, 60)
         flower.left(120)
         flower.goto(x, y)
         flower.end_fill()
 
-    for _ in range(7):
+    for _ in range(15):
         flower.color(random.choice(color)) #pycharm offerd it
         draw_petal()
         flower.left(60)
 
 
-    if x == 0 and y == 0:
+    if x == 50 or y > 150:
+        pencolor('gold')
         flower.fillcolor('gold')
         flower.begin_fill()
-        flower.circle(10, 360)
+        flower.circle(5, 360)
         flower.end_fill()
+        #
     else:
         flower.penup()
         flower.goto(x, y)
         flower.setheading(-90)
         flower.pendown()
         flower.color('darkgreen')
-        flower.pensize(3)
+        flower.pensize(4)
         flower.forward(100)
 
 
