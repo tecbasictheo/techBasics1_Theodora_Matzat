@@ -18,10 +18,6 @@ flower.pensize(3)
 color = ['blue', 'yellow', 'pink', 'red', 'orange', 'darkblue', 'violet', 'darkred']
 flower.color = random.choice(color)
 
-flower = Turtle()
-flower.hideturtle()
-flower.speed(0)
-
 flower_positions = [
     (50, 170),
     (-60, 160),
