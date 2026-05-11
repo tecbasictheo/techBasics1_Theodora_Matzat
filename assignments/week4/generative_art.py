@@ -1,5 +1,5 @@
-#sometimes I need to rerun the code to show the display
-
+#sometimes I need to rerun the code to show the display, I hope its just for me like that
+# I took the petalform from here (just the sizing) : https://www.geeksforgeeks.org/python/draw-a-flower-using-turtle-in-python/
 from turtle import *
 import random
 
@@ -61,12 +61,15 @@ for i, (x, y) in enumerate(flower_positions):
 
 
     if x == 50 or y > 150:
+        penup()
+        flower.goto(x, y)
+        pendown()
         pencolor('gold')
         flower.fillcolor('gold')
         flower.begin_fill()
         flower.circle(5, 360)
         flower.end_fill()
-        #
+        # i couldnt get it to center
     else:
         flower.penup()
         flower.goto(x, y)
@@ -80,10 +83,3 @@ for i, (x, y) in enumerate(flower_positions):
 
 update()
 exitonclick()
-# anforderung
-
-#- Your code should include at least one set of nested loops and one conditional statement
-#- Use `random` and list together to introduce some randomness
-#- Feel free to find another drawing to recreate in code. In such case, provide a link of your reference image in comment
-#- Introduce color (palette) into your drawing
-#- Integrate other methods of turtle from [official documentation](https://docs.python.org/3.12/library/turtle.html)
