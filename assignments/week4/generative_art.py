@@ -57,9 +57,6 @@ for i, (x, y) in enumerate(flower_positions):
 
 
     if x == 50 or y > 150:
-        penup()
-        flower.goto(x, y)
-        pendown()
         pencolor('gold')
         flower.fillcolor('gold')
         flower.begin_fill()
