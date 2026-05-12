@@ -10,7 +10,7 @@ ___
 
 - [x] Assigment 1
 - [x] Assigment 2
-- [ ] Assigment 3
+- [x] Assigment 3
 - [ ] Assigment 4
 - [ ] Assigment 5
 - [ ] Assigment 6
