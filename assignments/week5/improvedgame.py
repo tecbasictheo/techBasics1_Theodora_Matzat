@@ -1,8 +1,9 @@
+
 import time
 from os.path import exists
 
 #variable
-var1 = 0
+game_scene = 0
 
 #wakeup room -
 print ("You are opening your eyes.")
@@ -30,7 +31,7 @@ print ("...")
 print ('"Can I join you?"')
 time.sleep(1)
 
-while var1 == 0:
+while game_scene == 0:
     decision = input("Can they join you? (Yes or No)")
     if decision == "yes" or decision == "Yes":
         print ("Oh, thank god. Can you help me up?")
@@ -48,16 +49,16 @@ while var1 == 0:
         time.sleep(2)
         print ('"There is no way back..."')
         print ('"We have here to doors, lets take each one and take a look"')
-        var1 = 1
+        game_scene = 1
 
-        while var1 == 1:
+        while game_scene == 1:
             doorone = input('"Which one do you want? Right or left?"')
             if doorone == "left" or doorone == "Left":
                     print ('"You take the right door and I the other one"')
-                    var1 = 3
+                    game_scene = 3
             elif doorone == "right" or doorone == "Right":
                     print ('"You take the left door and I the other one"')
-                    var1 = 4
+                    game_scene = 4
             else:
                 print ("Value not valid, please try again")
 
@@ -73,21 +74,21 @@ while var1 == 0:
         print ("The new room is dimly lit.")
         time.sleep(1)
         print ("As you look around the new room you only see two doors across the room, other ways the room is empty")
-        var1 = 2
-        while var1 == 2:
+        game_scene = 2
+        while game_scene == 2:
             doorone = input("Which one do you want? Right or left?")
             if doorone == "left" or doorone == "Left":
                 print("You take the left door")
-                var1 = 3
+                game_scene = 3
             elif doorone == "right" or doorone == "Right":
                 print("You take the right door")
-                var1 = 4
+                game_scene = 4
             else:
                 print("Value not valid, please try again")
     else:
         print("Value not valid, please try again")
 
-while var1 == 3:
+while game_scene == 3:
     print("You are in a long corridor, you see no end")
     steps = input("How many steps do you wanna take? (Please type in numbers)")
     steps = int(steps)
@@ -96,7 +97,7 @@ while var1 == 3:
         print("You walk beside a door, that you did not see from the entrance.")
         time.sleep(1)
         print("You decide to take your chance.")
-        var1 = 4
+        game_scene = 4
     elif steps < 20:
         print("You walk along the corridor")
         time.sleep(1)
@@ -106,7 +107,7 @@ while var1 == 3:
         print("Please try again.")
     time.sleep(1)
 
-while var1 == 4:
+while game_scene == 4:
     time.sleep(1)
     print ("You open the door in front of you and step through.")
     time.sleep(1)
@@ -122,31 +123,31 @@ while var1 == 4:
     print("""There is something written
     ...""")
     time.sleep(1)
-    var1 = 5
-    while var1 == 5:
+    game_scene = 5
+    while game_scene == 5:
         frage1 = input ("What is the answer to the Ultimate Question of Life, the Universe, and Everything?")
         frage1 = str(frage1)
         if frage1 == ("42") :
             print ("Correct")
-            var1 = 6
+            game_scene = 6
         else:
             print ("No")
         time.sleep(1)
 
-while var1 == 6:
+while game_scene == 6:
     print("You here the doors click, they may be open now")
     time.sleep(2)
     doortwo = input ("What door do you wanna choose? (Left or Right)")
     if doortwo == "left" or doortwo == "Left":
         print("You take the left door")
         print ("You step through the door in the darkness")
-        var1 = 3
+        game_scene = 3
     elif doortwo == "right" or doortwo == "Right":
         print("You take the right door")
         time.sleep(1)
         print ("You are in a long corridor, you see no end")
-        var1 = 8
-        while var1 == 8:
+        game_scene = 8
+        while game_scene == 8:
             steps2 = input("How many steps do you wanna take? (Please type in numbers)")
             steps2 = int(steps2)
             if steps2 == 0:
@@ -158,7 +159,7 @@ while var1 == 6:
                 print("You walk beside a door, that you did not see from the entrance.")
                 time.sleep(1)
                 print("You decide to take your chance.")
-                var1 = 4
+                game_scene = 9
             elif steps2 < 20:
                 print("You walk along the corridor")
                 time.sleep(1)
@@ -171,14 +172,14 @@ while var1 == 6:
         print ("Value not valid, please try again")
 
 
-while var1 == 9:
+while game_scene == 9:
         lastdoor = input("Do you wanna go through the door? (Yes or No)")
         if lastdoor == "yes" or lastdoor == "Yes":
             print("You step through the door")
             time.sleep(2)
             print ("You are blended by the light")
             time.sleep(2)
-            var1 = 10
+            game_scene = 10
 
         elif lastdoor == "no" or lastdoor == "NO":
             print("You pass the door")
@@ -188,12 +189,12 @@ while var1 == 9:
             print("You continue into the darkness")
             time.sleep(3)
             print("You are lost forever...")
-            var1 = 7
+            game_scene = 7
         else:
             print("Value not valid, please try again")
 
 
-while var1 == 7:
+while game_scene == 7:
     time.sleep(1)
     print ("...")
     time.sleep(4)
@@ -202,7 +203,7 @@ while var1 == 7:
     print ("Try again ;)")
     exit()
 
-while var1 == 10:
+while game_scene == 10:
     print("You made it :) ")
     print("Good Job!")
     exit()
