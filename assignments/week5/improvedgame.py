@@ -7,11 +7,12 @@ game_scene = 0
 
 # function
 def dead_restart(name):
-    your_name = name
+    if not name:
+        name = "Unknown Hero"
     time.sleep(1)
     print("...")
     time.sleep(4)
-    print("Your character", your_name, "is dead.")
+    print(f"Your character {name} is dead.")
     time.sleep(1)
     print("Try again ;)")
     exit()
@@ -32,18 +33,19 @@ def step_one(game_scene):
         print("You walk beside a door, that you did not see from the entrance.")
         time.sleep(1)
         print("You decide to take your chance.")
-        game_scene = 2
+        return 2
     elif steps < 20:
         print("You walk along the corridor")
         time.sleep(1)
         print("...")
+        return game_scene
     else:
         print("You walk along the corridor and see no end.")
         print("Please try again.")
-    time.sleep(1)
+        return game_scene
 
 
-def step_two():
+def step_two(game_scene):
     steps2 = input("How many steps do you wanna take? (Please type in numbers)")
     steps2 = int(steps2)
     if steps2 == 0:
@@ -51,19 +53,22 @@ def step_two():
         time.sleep(1)
         print("...")
         print("Wanna try again?")
+        return game_scene
     elif 20 <= steps2 < 70:
         print("You walk beside a door, that you did not see from the entrance.")
         time.sleep(1)
         print("You decide to take your chance.")
-        game_scene = 9
+        return 9
     elif steps2 < 20:
         print("You walk along the corridor")
         time.sleep(1)
         print("...")
+        return game_scene
     else:
         print("You walk along the corridor and see no end.")
         print("Please try again.")
         time.sleep(1)
+        return game_scene
 
 
 def questions(game_scene):
@@ -71,10 +76,10 @@ def questions(game_scene):
     frage1 = str(frage1)
     if frage1 == "42":
         print("Correct")
-        game_scene = 6
+        return 6
     else:
         print("No")
-    time.sleep(1)
+        return game_scene
 
 
 # wakeup room -
@@ -94,7 +99,7 @@ print("...")
 time.sleep(1)
 name = input('"Whats your name?" ->')
 time.sleep(1)
-print('"hello', name, '"')
+print('"hello', name,'"')
 time.sleep(1)
 print('"Behind you, there is a door. It just leads to another empty room."')
 time.sleep(3)
@@ -127,7 +132,7 @@ while game_scene == 0:
             door = input('"Which one do you want? Right or left?"')
             if door == "left" or door == "Left":
                 print('"You take the right door and I the other one"')
-                step_one(game_scene)  # it does not work
+                game_scene = step_one(game_scene)
             elif door == "right" or door == "Right":
                 print('"You take the left door and I the other one"')
                 game_scene = 2
@@ -152,7 +157,7 @@ while game_scene == 0:
             doorone = input("Which one do you want? Right or left?")
             if doorone == "left" or doorone == "Left":
                 print("You take the left door")
-                step_one(game_scene)
+                game_scene = step_one(game_scene)
             elif doorone == "right" or doorone == "Right":
                 print("You take the right door")
                 game_scene = 2
@@ -178,7 +183,7 @@ while game_scene == 2:
     print("""There is something written
     ...""")
     time.sleep(1)
-    questions(game_scene)
+    game_scene = questions(game_scene)
 
 while game_scene == 6:
     print("You here the doors click, they may be open now")
@@ -187,12 +192,12 @@ while game_scene == 6:
     if doortwo == "left" or doortwo == "Left":
         print("You take the left door")
         print("You step through the door in the darkness")
-        step_one(game_scene)
+        game_scene = step_one(game_scene)
     elif doortwo == "right" or doortwo == "Right":
         print("You take the right door")
         time.sleep(1)
         print("You are in a long corridor, you see no end")
-        step_two(game_scene)
+        game_scene = step_two(game_scene)
     else:
         print("Value not valid, please try again")
 
@@ -204,7 +209,7 @@ while game_scene == 9:
         time.sleep(2)
         print("You are blended by the light")
         time.sleep(2)
-        finished_game()
+        game_scene = finished_game()
     elif lastdoor == "no" or lastdoor == "NO":
         print("You pass the door")
         time.sleep(1)
