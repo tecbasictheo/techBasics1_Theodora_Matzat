@@ -1,4 +1,4 @@
-# I decided to improve my game and make the code clearer in structur.
+# I decided to improve my game and make the code clearer in structure.
 
 import time
 from os.path import exists
