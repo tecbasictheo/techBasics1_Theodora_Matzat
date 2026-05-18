@@ -101,7 +101,7 @@ print("...")
 time.sleep(1)
 name = input('"Whats your name?" ->')
 time.sleep(1)
-print('"hello', name,'"')
+print('"hello', name, '"')
 time.sleep(1)
 print('"Behind you, there is a door. It just leads to another empty room."')
 time.sleep(3)
@@ -194,12 +194,12 @@ while game_scene == 6:
     if doortwo == "left" or doortwo == "Left":
         print("You take the left door")
         print("You step through the door in the darkness")
-        game_scene = step_one(game_scene)
+        game_scene = step_two(game_scene)
     elif doortwo == "right" or doortwo == "Right":
         print("You take the right door")
         time.sleep(1)
         print("You are in a long corridor, you see no end")
-        game_scene = step_two(game_scene)
+        dead_restart()
     else:
         print("Value not valid, please try again")
 
