@@ -1,3 +1,5 @@
+# I decided to improve my game and make the code clearer in structur.
+
 import time
 from os.path import exists
 
@@ -209,7 +211,7 @@ while game_scene == 9:
         time.sleep(2)
         print("You are blended by the light")
         time.sleep(2)
-        game_scene = finished_game()
+        finished_game()
     elif lastdoor == "no" or lastdoor == "NO":
         print("You pass the door")
         time.sleep(1)
