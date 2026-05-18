@@ -6,7 +6,6 @@ from os.path import exists
 # variable
 game_scene = 0
 
-
 # function
 def dead_restart(name):
     if not name:
