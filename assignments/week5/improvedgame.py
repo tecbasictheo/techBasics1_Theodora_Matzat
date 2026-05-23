@@ -198,7 +198,7 @@ while game_scene == 6:
         print("You take the right door")
         time.sleep(1)
         print("You are in a long corridor, you see no end")
-        dead_restart()
+        dead_restart() #if I use step_one here again, it does not work ? why ?
     else:
         print("Value not valid, please try again")
 
