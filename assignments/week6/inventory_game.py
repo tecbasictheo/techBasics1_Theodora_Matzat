@@ -190,6 +190,11 @@ def examine(item_name):  # works
         print(f"You do not have this, {item_name}, in your inventory.")
         return
 
+def end_game():
+    if len(home) == 6:
+        print("You bought all items for the dinner.")
+        print("Thanks for playing!")
+        exit()
 # --- Game Loop ---
 
 def game_loop():
@@ -230,12 +235,6 @@ def game_loop():
                 break
             case _:  # else
                 print("Unknown command. Type 'help' to see available commands.")
-
-def end_game():
-    if len(home) == 6:
-        print("You bought all items for the dinner.")
-        print("Thanks for playing!")
-        exit()
 
 if __name__ == "__main__":
     game_loop()
