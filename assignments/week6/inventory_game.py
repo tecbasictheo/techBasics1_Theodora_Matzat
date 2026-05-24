@@ -1,5 +1,5 @@
 # --- A grocery shopping experience---
-# I had the most troubels with the Input-variance and needed a long time to figure out:
+# I had the most troubles with the Input-variance and needed a long time to figure out:
 #     item_name = item_name.strip().strip("[]")
 #     if item_name in [item["name"].lower() for item in shopping_card]
 
@@ -114,7 +114,7 @@ def drop(item_name):
         else:
             print("This item does not exist.")
             return shopping_card
-
+    return shopping_card
 def buy(item_name):
     item_name = item_name.strip().strip("[]")
     if item_name in [item["name"].lower() for item in shopping_card]:
