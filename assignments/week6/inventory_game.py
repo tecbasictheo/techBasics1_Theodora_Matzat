@@ -211,7 +211,7 @@ def game_loop():
 
         match command.split():
             case ["help"]:
-                print("Commands: inventory, look Aisle 1, look Aisle 2, look Aisle 3, look Aisle 4, pickup [item], drop [item], use [item], examine [item], quit")
+                print("Commands: Shopping card, look Aisle 1, look Aisle 2, look Aisle 3, look Aisle 4, pickup [item], drop [item], buy [item], examine [item], quit")
             case ["Shopping card"]:
                 show_card()
             case ["look Aisle 1"]:
