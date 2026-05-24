@@ -117,8 +117,7 @@ def drop(item_name):
     return shopping_card
 def buy(item_name):
     item_name = item_name.strip().strip("[]")
-    if item_name in [item["name"].lower() for item in shopping_card]:
-        for item in shopping_card:
+    for item in shopping_card:
             if item["type"] == "food":
                 if item["name"].lower() == item_name.lower():
                     print("You found something for the main course.")
@@ -171,7 +170,6 @@ def buy(item_name):
                         Aisle_3.append(item)
                         print(f"You put, {item_name}, away.")
                         return shopping_card
-        return home
     else:
         print(f"You do not have this, {item_name}, in your inventory.")
         return shopping_card
