@@ -15,7 +15,7 @@ Aisle_1 = [
 Aisle_2 = [
     {"name": "Water", "type": "drink", "description": "Good for drinking and cooking."},
     {"name": "Milk", "type": "drink", "description": "For drinking, cooking and backing"},
-    {"name": "Oatmilk", "type": "drink", "description": "An vegan alternative to milk"}
+    {"name": "Oat-milk", "type": "drink", "description": "An vegan alternative to milk"}
 ]
 Aisle_3 = [
     {"name": "Cheese", "type": "cooled food", "description": "Its not vegan."},
@@ -200,13 +200,13 @@ def game_loop():
 
     while True:
         command = input("\n> ").strip().lower()
-
+        end_game()
         # As an example, here I used the match/case syntax to replace long if/else statements
         # This feature is only supported from Python 3.10 and above
 
         match command.split():
             case ["help"]:
-                print("Commands: inventory, look, pickup [item], drop [item], use [item], examine [item], quit")
+                print("Commands: inventory, look Aisle 1, look Aisle 2, look Aisle 3, look Aisle 4, pickup [item], drop [item], use [item], examine [item], quit")
             case ["Shopping card"]:
                 show_card()
             case ["look Aisle 1"]:
@@ -231,6 +231,11 @@ def game_loop():
             case _:  # else
                 print("Unknown command. Type 'help' to see available commands.")
 
+def end_game():
+    if len(home) == 6:
+        print("You bought all items for the dinner.")
+        print("Thanks for playing!")
+        exit()
 
 if __name__ == "__main__":
     game_loop()
