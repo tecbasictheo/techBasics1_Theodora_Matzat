@@ -3,7 +3,7 @@
 #     item_name = item_name.strip().strip("[]")
 #     if item_name in [item["name"].lower() for item in shopping_card]
 # I need more time to make the game ascetically pleasing, but for now the code is working.
-# I did go to the tech basics tutorium, but they could not really help me with the functions: pickup, buy, drop. Because of that the functions are a bit messy, but I understand how they work. For sure they can be shorten and cleaned up and I will be doing it in the next tutorium.
+# I did go to the tech basics tutorium, but they could not really help me with the functions: pickup, buy, drop. Because of that the functions are a bit messy, but I understand how they work. For sure, they can be shortened and cleaned up and I will be doing it in the next tutorium.
 
 # All the used lists:
 home = []
