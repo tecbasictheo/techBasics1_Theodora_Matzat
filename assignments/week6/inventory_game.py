@@ -1,9 +1,7 @@
 # --- A grocery shopping experience---
-# I had the most troubles with the Input-variance and needed a long time to figure out:
-#     item_name = item_name.strip().strip("[]")
-#     if item_name in [item["name"].lower() for item in shopping_card]
-# I need more time to make the game aesthetically pleasing, but for now the code is working.
-# I did go to the tech basics tutorium, but they could not really help me with the functions: pickup, buy, drop. Because of that the functions are a bit messy, but I understand how they work. For sure, they can be shortened and cleaned up and I will be doing it in the next tutorium.
+# I added expectipn on the functions, so that in the game the player knows it wasnt an Input error
+
+import csv
 
 # All the used lists:
 home = []
@@ -34,6 +32,8 @@ Aisle_4 = [
 Grocery_store = [Aisle_1, Aisle_2, Aisle_3, Aisle_4]
 # My constants
 MAX_CARD_SIZE = 5
+
+DEBUG = True
 
 
 # --- Functions ---
@@ -74,128 +74,140 @@ def show_aisle_items_4():
 
 
 def pick_up(item_name):
-    item_name = item_name.strip().strip("[]")
-    if MAX_CARD_SIZE >= len(shopping_card):
-        if item_name not in [item["name"] for item in shopping_card]:  # not mine
-            for aisle in Grocery_store:
-                for item in aisle:
-                    if item["name"].lower() == item_name.lower():
-                        aisle.remove(item)
-                        shopping_card.append(item)
-                        print(f"You picked up the {item['name']}")
-                        return shopping_card
-            print(f"There is no '{item_name}' in the store.")
-            return shopping_card
+    try:
+        item_name = item_name.strip().strip("[]")
+        if MAX_CARD_SIZE >= len(shopping_card):
+            if item_name not in [item["name"] for item in shopping_card]:  # not mine
+                for aisle in Grocery_store:
+                    for item in aisle:
+                        if item["name"].lower() == item_name.lower():
+                            aisle.remove(item)
+                            shopping_card.append(item)
+                            print(f"You picked up the {item['name']}")
+                            return shopping_card
+                print(f"There is no '{item_name}' in the store.")
+                return shopping_card
+            else:
+                print("You already picked up the " + item_name + ".")
+                return shopping_card
         else:
-            print("You already picked up the " + item_name + ".")
+            print("Not enough space in inventory")
             return shopping_card
-    else:
-        print("Not enough space in inventory")
-        return shopping_card
+    except:
+        print("An exception occurred")
+
 
 
 def drop(item_name):
     item_name = item_name.strip().strip("[]")
     if item_name in [item["name"].lower() for item in shopping_card]:
-        if item_name == "fruit" or "vegetable":
-            for item in shopping_card:
-                shopping_card.remove(item)
-                Aisle_1.append(item)
-                print("You put " + item_name + " back.")
-            return shopping_card
-        elif item_name == "drink":
-            for item in shopping_card:
-                shopping_card.remove(item)
-                Aisle_2.append(item)
-                print("You put " + item_name + " back.")
-            return shopping_card
-        elif item_name == "cooled food":
-            for item in shopping_card:
-                shopping_card.remove(item)
-                Aisle_3.append(item)
-                print("You put " + item_name + " back.")
-            return shopping_card
-        elif item_name == "food":
-            for item in shopping_card:
-                shopping_card.remove(item)
-                Aisle_4.append(item)
-                print("You put " + item_name + " back.")
-            return shopping_card
-        else:
-            print("This item does not exist.")
-            return shopping_card
-    return shopping_card
+        try:
+            if item_name == "fruit" or "vegetable":
+                for item in shopping_card:
+                    shopping_card.remove(item)
+                    Aisle_1.append(item)
+                    print("You put " + item_name + " back.")
+                return shopping_card
+            elif item_name == "drink":
+                for item in shopping_card:
+                    shopping_card.remove(item)
+                    Aisle_2.append(item)
+                    print("You put " + item_name + " back.")
+                return shopping_card
+            elif item_name == "cooled food":
+                for item in shopping_card:
+                    shopping_card.remove(item)
+                    Aisle_3.append(item)
+                    print("You put " + item_name + " back.")
+                return shopping_card
+            elif item_name == "food":
+                for item in shopping_card:
+                    shopping_card.remove(item)
+                    Aisle_4.append(item)
+                    print("You put " + item_name + " back.")
+                return shopping_card
+            else:
+                print("This item does not exist.")
+               return shopping_card
+
+        except:
+            print("An exception occurred")
+
+    else:
+        return shopping_card
 
 
 def buy(item_name):
     item_name = item_name.strip().strip("[]")
-    for item in shopping_card:
-        if item["type"] == "food":
-            if item["name"].lower() == item_name.lower():
-                print("You found something for the main course.")
-                input("Are your sure it is vegan?")
-                if input == "YES" or "yes":
-                    shopping_card.remove(item)
-                    home.append(item)
-                    print("You bought it")
+    try:
+        for item in shopping_card:
+            if item["type"] == "food":
+                if item["name"].lower() == item_name.lower():
+                    print("You found something for the main course.")
+                    input("Are your sure it is vegan?")
+                    if input == "YES" or "yes":
+                        shopping_card.remove(item)
+                        home.append(item)
+                        print("You bought it")
+                        return shopping_card
+                    else:
+                        shopping_card.remove(item)
+                        Aisle_4.append(item)
+                        print(f"You put, {item_name}, away.")
+                        return shopping_card
+            elif item["type"] == "drink":
+                if item["name"].lower() == item_name.lower():
+                    print("You found something to drink.")
+                    input("Are your sure it is vegan?")
+                    if input == "YES" or "yes":
+                        shopping_card.remove(item)
+                        home.append(item)
+                        return shopping_card
+                    else:
+                        shopping_card.remove(item)
+                        Aisle_2.append(item)
+                        print(f"You put, {item_name}, away.")
+                        return shopping_card
+            elif item["type"] == "vegetable" or "fruit":
+                if item["name"].lower() == item_name.lower():
+                    input("Are your sure that you want to buy it?")
+                    if input == "YES" or "yes":
+                        shopping_card.remove(item)
+                        home.append(item)
+                        return shopping_card
+                    else:
+                        shopping_card.remove(item)
+                        Aisle_1.append(item)
+                        print(f"You put, {item_name}, away.")
                     return shopping_card
-                else:
-                    shopping_card.remove(item)
-                    Aisle_4.append(item)
-                    print(f"You put, {item_name}, away.")
-                    return shopping_card
-        elif item["type"] == "drink":
-            if item["name"].lower() == item_name.lower():
-                print("You found something to drink.")
-                input("Are your sure it is vegan?")
-                if input == "YES" or "yes":
-                    shopping_card.remove(item)
-                    home.append(item)
-                    return shopping_card
-                else:
-                    shopping_card.remove(item)
-                    Aisle_2.append(item)
-                    print(f"You put, {item_name}, away.")
-                    return shopping_card
-        elif item["type"] == "vegetable" or "fruit":
-            if item["name"].lower() == item_name.lower():
-                input("Are your sure that you want to buy it?")
-                if input == "YES" or "yes":
-                    shopping_card.remove(item)
-                    home.append(item)
-                    return shopping_card
-                else:
-                    shopping_card.remove(item)
-                    Aisle_1.append(item)
-                    print(f"You put, {item_name}, away.")
-                return shopping_card
-        elif item["type"] == "cooled food":
-            if item["name"].lower() == item_name.lower():
-                print("You found something for the main course.")
-                input("Are your sure it is vegan?")
-                if input == "YES" or "yes":
-                    shopping_card.remove(item)
-                    home.append(item)
-                    return shopping_card
-                else:
-                    shopping_card.remove(item)
-                    Aisle_3.append(item)
-                    print(f"You put, {item_name}, away.")
-                    return shopping_card
-    else:
+            elif item["type"] == "cooled food":
+                if item["name"].lower() == item_name.lower():
+                    print("You found something for the main course.")
+                    input("Are your sure it is vegan?")
+                    if input == "YES" or "yes":
+                        shopping_card.remove(item)
+                        home.append(item)
+                        return shopping_card
+                    else:
+                        shopping_card.remove(item)
+                        Aisle_3.append(item)
+                        print(f"You put, {item_name}, away.")
+                        return shopping_card
+    except:
         print(f"You do not have this, {item_name}, in your inventory.")
         return shopping_card
 
 
 def examine(item_name):  # works
-    for item in shopping_card:
-        print(f"Name: {item['name']}")
-        print(f"Type: {item['type']}")
-        print(f"Description: {item['description']}")
-        return
-    else:
-        print(f"You do not have this, {item_name}, in your inventory.")
-        return
+    try:
+        for item in shopping_card:
+            print(f"Name: {item['name']}")
+            print(f"Type: {item['type']}")
+            print(f"Description: {item['description']}")
+            return
+    except:
+            print(f"You do not have this, {item_name}, in your inventory.")
+            return
 
 
 def end_game():
@@ -204,6 +216,10 @@ def end_game():
         print("Thanks for playing!")
         exit()
 
+
+def save_file():
+    with open("inventory.csv", "w") as file:
+        writer = csv.writer(file)
 
 # --- Game Loop ---
 
@@ -250,3 +266,4 @@ def game_loop():
 
 if __name__ == "__main__":
     game_loop()
+    save_file()
