@@ -253,11 +253,15 @@ def save_file(item):
     fieldnames.append("Vegan or not?")
     for row in rows: # does that work
         idea = "No"
-        try:  for item in home:
-            if item["vegan"] == "Yes":
-                writer.writerow(["Correct"])
-            else: writer.writerow(["Not correct"])
-        row["Vegan or not?"] = idea
+        try:
+                for item in home:
+                    if item["vegan"] == "Yes":
+                        writer.writerow(["Correct"])
+                    else:
+                        writer.writerow(["Not correct"])
+                        row["Vegan or not?"] = idea
+        except: print("It did nott work")
+
     print(fieldnames)
     print(rows)
 
