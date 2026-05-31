@@ -1,6 +1,6 @@
 # --- A grocery shopping experience---
-# I added expectipn on the functions, so that in the game the player knows it wasnt an Input error
-# I did not figure out how to d
+# I added exceptions on the functions, so that in the game the player knows it wasnt an Input error
+# I do not know why Debug is not running, it should work
 
 import csv
 import time
@@ -220,15 +220,18 @@ def examine(item_name):  # works
 
 
 def end_game():
+    global home
     if len(home) == 6:
         print("You bought all items for the dinner.")
         show_board()
         print("Thanks for playing!")
-        exit()
+        while True:
+                exit()
     else:
         pass
 
 def save_file(item):
+    global home
     rows = []
     fieldnames = []
 
@@ -248,14 +251,13 @@ def save_file(item):
     for row in rows:
         row["Time"] = time.process_time()
     fieldnames.append("Vegan or not?")
-    for row in rows: # does that work?ß
-        row["Vegan or not?"] =
-        try:
-            for item in home:
-                if item["vegan"] == "Yes":
-                    writer.writerow(["Correct"])
-        except:
-            print("Something went wrong.")
+    for row in rows: # does that work
+        idea = "No"
+        try:  for item in home:
+            if item["vegan"] == "Yes":
+                writer.writerow(["Correct"])
+            else: writer.writerow(["Not correct"])
+        row["Vegan or not?"] = idea
     print(fieldnames)
     print(rows)
 
@@ -327,5 +329,10 @@ def game_loop():
 if __name__ == "__main__":
     start = time.time()
     DEBUG = True
-
-    game_loop()
+    if DEBUG:
+        item = "example_item"
+        save_file(item)
+        print("file is created")
+        end_game()
+    else:
+        game_loop()
