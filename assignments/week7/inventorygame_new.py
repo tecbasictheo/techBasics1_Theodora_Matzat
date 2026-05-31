@@ -147,10 +147,10 @@ def buy(item_name):
                     print("You found something for the main course.")
                     input("Are your sure it is vegan?")
                     if input == "YES" or "yes":
+                        print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
                         save_file(item)
-                        print("You bought it")
                         return shopping_card
                     else:
                         shopping_card.remove(item)
@@ -162,10 +162,10 @@ def buy(item_name):
                     print("You found something to drink.")
                     input("Are your sure it is vegan?")
                     if input == "YES" or "yes":
+                        print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
                         save_file(item)
-                        print("You bought it")
                         return shopping_card
                     else:
                         shopping_card.remove(item)
@@ -176,10 +176,10 @@ def buy(item_name):
                 if item["name"].lower() == item_name.lower():
                     input("Are your sure that you want to buy it?")
                     if input == "YES" or "yes":
+                        print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
                         save_file(item)
-                        print("You bought it")
                         return shopping_card
                     else:
                         shopping_card.remove(item)
@@ -191,10 +191,10 @@ def buy(item_name):
                     print("You found something for the main course.")
                     input("Are your sure it is vegan?")
                     if input == "YES" or "yes":
+                        print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
                         save_file(item)
-                        print("You bought it")
                         return shopping_card
                     else:
                         shopping_card.remove(item)
