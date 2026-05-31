@@ -248,7 +248,7 @@ def save_file(item):
     for row in rows:
         row["Time"] = time.process_time()
     fieldnames.append("Vegan or not?")
-    for row in rows: # does that work?
+    for row in rows: # does that work?ß
         row["Vegan or not?"] =
         try:
             for item in home:
