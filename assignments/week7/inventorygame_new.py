@@ -1,10 +1,9 @@
 # --- A grocery shopping experience---
 # I added exceptions on the functions, so that in the game the player knows it wasnt an Input error
-# I do not know why Debug is not running, it should work
+# I have no idea why the code does not run
 
 import csv
 import time
-from _pyrepl import reader
 
 # All the used lists:
 home = []
@@ -226,7 +225,8 @@ def end_game():
         show_board()
         print("Thanks for playing!")
         while True:
-                exit()
+            exit()
+
     else:
         pass
 
@@ -236,7 +236,7 @@ def save_file(item):
     fieldnames = []
 
     with open("inventory.csv", "a") as file:
-        writer = csv.DictReader(file)
+        reader = csv.DictReader(file)
         fieldnames = reader.fieldnames
         for row in reader:
             rows.append(row)
@@ -252,15 +252,7 @@ def save_file(item):
         row["Time"] = time.process_time()
     fieldnames.append("Vegan or not?")
     for row in rows: # does that work
-        idea = "No"
-        try:
-                for item in home:
-                    if item["vegan"] == "Yes":
-                        writer.writerow(["Correct"])
-                    else:
-                        writer.writerow(["Not correct"])
-                        row["Vegan or not?"] = idea
-        except: print("It did nott work")
+        row["Vegan or not?"] = "Yes" if item["vegan"] else "No"
 
     print(fieldnames)
     print(rows)
@@ -272,20 +264,23 @@ def save_file(item):
 
 
 def show_board():
-    with open("inventory.csv", "r") as file:
-        reader = csv.DictReader(file)
-        points = reader.row("Vegan or not?")
-        if "Correct" in points:
-            x = +1
+    try:
+        with open("inventory.csv", "r") as csvfile:
+            reader = csv.DictReader(csvfile)
+            correct = 0
+            for row in reader:
+                if row["Vegan or not?"] == "Yes":
+                    correct += 1
 
-    with open("inventory.csv", "r") as file:
-        reader = csv.DictReader(file, delimiter=',')
-        for row in reader:
-            print(row)
+        with open("inventory.csv", "r") as file:
+            reader = csv.DictReader(file, delimiter=',')
+            for row in reader:
+                print(row)
 
-    print("Points:")
-    print(f''"You made", {x}, "/6 points.")
-
+        print("Points:")
+        print(f''"You made", {correct}, "/6 points.")
+    except:
+        print("An error occured.")
 
 # --- Game Loop ---
 

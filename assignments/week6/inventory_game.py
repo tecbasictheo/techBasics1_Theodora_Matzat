@@ -125,10 +125,10 @@ def drop(item_name):
                     shopping_card.remove(item)
                     Aisle_4.append(item)
                     print("You put " + item_name + " back.")
-                return shopping_card
+                    return shopping_card
             else:
                 print("This item does not exist.")
-               return shopping_card
+                return shopping_card
 
         except:
             print("An exception occurred")
