@@ -104,25 +104,25 @@ def drop(item_name):
     if item_name in [item["name"].lower() for item in shopping_card]:
         try:
             if item_name == "fruit" or item_name == "vegetable":
-                for item in shopping_card:
+                for item in shopping_card[:]:
                     shopping_card.remove(item)
                     Aisle_1.append(item)
                     print("You put " + item_name + " back.")
                 return shopping_card
             elif item_name == "drink":
-                for item in shopping_card:
+                for item in shopping_card[:]:
                     shopping_card.remove(item)
                     Aisle_2.append(item)
                     print("You put " + item_name + " back.")
                 return shopping_card
             elif item_name == "cooled food":
-                for item in shopping_card:
+                for item in shopping_card[:]:
                     shopping_card.remove(item)
                     Aisle_3.append(item)
                     print("You put " + item_name + " back.")
                 return shopping_card
             elif item_name == "food":
-                for item in shopping_card:
+                for item in shopping_card[:]:
                     shopping_card.remove(item)
                     Aisle_4.append(item)
                     print("You put " + item_name + " back.")
@@ -141,7 +141,7 @@ def drop(item_name):
 def buy(item_name):
     item_name = item_name.strip().strip("[]")
     try:
-        for item in shopping_card:
+        for item in shopping_card[:]:
             if item["type"] == "food":
                 if item["name"].lower() == item_name.lower():
                     print("You found something for the main course.")
@@ -232,8 +232,7 @@ def end_game():
         pass
 
 def save_file(item):
-    rows = []
-    fieldnames = ["Names", "Time", "Vegan or not?"]
+    fieldnames = ["Name", "Time", "Vegan or not?"]
     file_exists = os.path.exists("inventory.csv")
 
     with open("inventory.csv", "a") as file:
@@ -242,7 +241,7 @@ def save_file(item):
             writer.writeheader()
 
         writer.writerow({
-            "Name": item["Name"],
+            "Name": item["name"],
             "Time": time.process_time(),
             "Vegan or not?": item["vegan"],
         })
@@ -312,11 +311,12 @@ def game_loop():
 
 if __name__ == "__main__":
     start = time.time()
+    open("inventory.csv", "w").close()
     DEBUG = True
     if DEBUG:
         item = {"name": "Example Item", "type": "food", "description": "Test", "vegan": "Yes"}
         save_file(item)
-        print("file is created")
+        home = [1,2,3,4,5,6]
         end_game()
     else:
         game_loop()
