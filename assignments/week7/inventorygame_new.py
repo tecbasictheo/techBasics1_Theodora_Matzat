@@ -103,7 +103,7 @@ def drop(item_name):
     item_name = item_name.strip().strip("[]")
     if item_name in [item["name"].lower() for item in shopping_card]:
         try:
-            if item_name == "fruit" or "vegetable":
+            if item_name == "fruit" or item_name == "vegetable":
                 for item in shopping_card:
                     shopping_card.remove(item)
                     Aisle_1.append(item)
@@ -146,7 +146,7 @@ def buy(item_name):
                 if item["name"].lower() == item_name.lower():
                     print("You found something for the main course.")
                     choice = input("Are your sure it is vegan?").strip().lower()
-                    if choice == "YES" or "yes":
+                    if choice == "YES" or choice == "yes":
                         print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
@@ -161,7 +161,7 @@ def buy(item_name):
                 if item["name"].lower() == item_name.lower():
                     print("You found something to drink.")
                     choice = input("Are your sure it is vegan?").strip().lower()
-                    if choice == "YES" or "yes":
+                    if choice == "YES" or choice == "yes":
                         print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
@@ -172,11 +172,11 @@ def buy(item_name):
                         Aisle_2.append(item)
                         print(f"You put, {item_name}, away.")
                         return shopping_card
-            elif item["type"] == "vegetable" or "fruit":
+            elif item["type"] == "vegetable" or item["type"] == "fruit":
                 if item["name"].lower() == item_name.lower():
                     input("Are your sure that you want to buy it?")
                     choice = input("Are your sure it is vegan?").strip().lower()
-                    if choice == "YES" or "yes":
+                    if choice == "YES" or choice == "yes":
                         shopping_card.remove(item)
                         home.append(item)
                         save_file(item)
@@ -190,7 +190,7 @@ def buy(item_name):
                 if item["name"].lower() == item_name.lower():
                     print("You found something for the main course.")
                     choice = input("Are your sure it is vegan?").strip().lower()
-                    if choice == "YES" or "yes":
+                    if choice == "YES" or choice == "yes":
                         print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
