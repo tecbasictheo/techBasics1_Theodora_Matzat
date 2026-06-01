@@ -4,6 +4,7 @@
 
 import csv
 import time
+import os
 
 # All the used lists:
 home = []
@@ -21,7 +22,7 @@ Aisle_1 = [
 Aisle_2 = [
     {"name": "Water", "type": "drink", "description": "Good for drinking and cooking.", "vegan": "Yes"},
     {"name": "Milk", "type": "drink", "description": "For drinking, cooking and backing", "vegan": "No"},
-    {"name": "Oat-milk", "type": "drink", "description": "An vegan alternative to milk", "vegan": "Yes"}
+    {"name": "Oatmilk", "type": "drink", "description": "An vegan alternative to milk", "vegan": "Yes"}
 ]
 Aisle_3 = [
     {"name": "Cheese", "type": "cooled food", "description": "Its not vegan.", "vegan": "No"},
@@ -144,8 +145,8 @@ def buy(item_name):
             if item["type"] == "food":
                 if item["name"].lower() == item_name.lower():
                     print("You found something for the main course.")
-                    input("Are your sure it is vegan?")
-                    if input == "YES" or "yes":
+                    choice = input("Are your sure it is vegan?").strip().lower()
+                    if choice == "YES" or "yes":
                         print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
@@ -159,8 +160,8 @@ def buy(item_name):
             elif item["type"] == "drink":
                 if item["name"].lower() == item_name.lower():
                     print("You found something to drink.")
-                    input("Are your sure it is vegan?")
-                    if input == "YES" or "yes":
+                    choice = input("Are your sure it is vegan?").strip().lower()
+                    if choice == "YES" or "yes":
                         print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
@@ -174,8 +175,8 @@ def buy(item_name):
             elif item["type"] == "vegetable" or "fruit":
                 if item["name"].lower() == item_name.lower():
                     input("Are your sure that you want to buy it?")
-                    if input == "YES" or "yes":
-                        print("You bought it")
+                    choice = input("Are your sure it is vegan?").strip().lower()
+                    if choice == "YES" or "yes":
                         shopping_card.remove(item)
                         home.append(item)
                         save_file(item)
@@ -188,8 +189,8 @@ def buy(item_name):
             elif item["type"] == "cooled food":
                 if item["name"].lower() == item_name.lower():
                     print("You found something for the main course.")
-                    input("Are your sure it is vegan?")
-                    if input == "YES" or "yes":
+                    choice = input("Are your sure it is vegan?").strip().lower()
+                    if choice == "YES" or "yes":
                         print("You bought it")
                         shopping_card.remove(item)
                         home.append(item)
@@ -231,36 +232,20 @@ def end_game():
         pass
 
 def save_file(item):
-    global home
     rows = []
-    fieldnames = []
+    fieldnames = ["Names", "Time", "Vegan or not?"]
+    file_exists = os.path.exists("inventory.csv")
 
     with open("inventory.csv", "a") as file:
-        reader = csv.DictReader(file)
-        fieldnames = reader.fieldnames
-        for row in reader:
-            rows.append(row)
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        if file_exists:
+            writer.writeheader()
 
-    print(fieldnames)
-    print(rows)
-
-    fieldnames.append("Name")
-    for row in rows:
-        row["Name"] = (item)
-    fieldnames.append("Time")
-    for row in rows:
-        row["Time"] = time.process_time()
-    fieldnames.append("Vegan or not?")
-    for row in rows: # does that work
-        row["Vegan or not?"] = "Yes" if item["vegan"] else "No"
-
-    print(fieldnames)
-    print(rows)
-
-    with open('fruits_new.csv', 'w', newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
+        writer.writerow({
+            "Name": item["Name"],
+            "Time": time.process_time(),
+            "Vegan or not?": item["vegan"],
+        })
 
 
 def show_board():
@@ -329,7 +314,7 @@ if __name__ == "__main__":
     start = time.time()
     DEBUG = True
     if DEBUG:
-        item = "example_item"
+        item = {"name": "Example Item", "type": "food", "description": "Test", "vegan": "Yes"}
         save_file(item)
         print("file is created")
         end_game()
