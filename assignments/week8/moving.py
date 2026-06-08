@@ -1,6 +1,7 @@
 
 # I hope I did the class right, I was a bit unsure if it was enough
 # the glow function did not really work, so I wanted to submit a working code first before i add the bonus
+# It needs a moment to load
 import random
 import pygame
 import math
