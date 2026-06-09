@@ -10,10 +10,12 @@ ___
 
 - [x] Assigment 1
 - [x] Assigment 2
-- [x] Assigment 3
-- [ ] Assigment 4
-- [ ] Assigment 5
-- [ ] Assigment 6
+- [x] Assigment 4
+- [x] Assigment 5
+- [x] Assigment 6
+- [x] Assigment 7
+- [x] Assigment 8
+- [ ] Assigment 9
 ___
 
 ```
