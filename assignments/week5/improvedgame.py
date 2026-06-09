@@ -84,141 +84,142 @@ def questions(game_scene):
 
 
 # wakeup room -
-print("You are opening your eyes.")
-time.sleep(1)
-print("You are in the darkness. It is a small room. ")
-time.sleep(1)
-print("You try to make out any forms in the darkness, as your turn your head...")
-print("You see something move...")
-time.sleep(2)
-print('"hello?"')
-time.sleep(1)
-print("...")
-print('"You are finally awake."')
-time.sleep(1)
-print("...")
-time.sleep(1)
-name = input('"Whats your name?" ->')
-time.sleep(1)
-print('"hello', name, '"')
-time.sleep(1)
-print('"Behind you, there is a door. It just leads to another empty room."')
-time.sleep(3)
-print("You stand up and move towards the said direction")
-print("...")
-print('"Can I join you?"')
-time.sleep(1)
-
-# decision
-while game_scene == 0:
-    decision = input("Can they join you? (Yes or No)")
-    if decision == "yes" or decision == "Yes":
-        print('"Oh, thank god. Can you help me up?"')
-        time.sleep(1)
-        print("You move towards the voice and take their reaching hand, to pull them up.")
-        print("Even though your eyes are getting adjusted to the dark, you still see just the body outlines")
-        time.sleep(5)
-        print("They move fast to the said door, you rush after. Unsure if them joining you was the right decision")
-        time.sleep(5)
-        print(
-            "They reach the said door. Opening it without hesitation, you step right behind them through. Scared to be shut in.")
-        time.sleep(5)
-        print("The door closes behind you and you hear the door lock")
-        time.sleep(2)
-        print("You reach for the door, but do not find a handle")
-        time.sleep(2)
-        print('"There is no way back..."')
-        print('"We have here to doors, lets take each one and take a look"')
-        while game_scene == 0:
-            door = input('"Which one do you want? Right or left?"')
-            if door == "left" or door == "Left":
-                print('"You take the right door and I the other one"')
-                game_scene = step_one(game_scene)
-            elif door == "right" or door == "Right":
-                print('"You take the left door and I the other one"')
-                game_scene = 2
-            else:
-                print("Value not valid, please try again")
-
-    elif decision == "no" or decision == "No":
-        print("...")
-        time.sleep(1)
-        print(
-            "You hear something move closer. Thinking they are coming for you makes you move backwards, until you feel the wooden door.")
-        time.sleep(1)
-        print("As your hear them coming closer, you do not think and just open the door behind you")
-        print("You rush trough the door and shut it close")
-        time.sleep(2)
-        print("...")
-        print("The new room is dimly lit.")
-        time.sleep(1)
-        print("As you look around the new room you only see two doors across the room, other ways the room is empty")
-        game_scene = 7
-        while game_scene == 7:
-            doorone = input("Which one do you want? Right or left?")
-            if doorone == "left" or doorone == "Left":
-                print("You take the left door")
-                game_scene = step_one(game_scene)
-            elif doorone == "right" or doorone == "Right":
-                print("You take the right door")
-                game_scene = 2
-            else:
-                print("Value not valid, please try again")
-    else:
-        print("Value not valid, please try again")
-
-# Question room
-while game_scene == 2:
+if __name__ == "__main__":
+    print("You are opening your eyes.")
     time.sleep(1)
-    print("You open the door in front of you and step through.")
+    print("You are in the darkness. It is a small room. ")
     time.sleep(1)
-    print("You try to hold the door open, but it is to heavy and shuts close behind you")
+    print("You try to make out any forms in the darkness, as your turn your head...")
+    print("You see something move...")
+    time.sleep(2)
+    print('"hello?"')
+    time.sleep(1)
+    print("...")
+    print('"You are finally awake."')
+    time.sleep(1)
+    print("...")
+    time.sleep(1)
+    name = input('"Whats your name?" ->')
+    time.sleep(1)
+    print('"hello', name, '"')
+    time.sleep(1)
+    print('"Behind you, there is a door. It just leads to another empty room."')
     time.sleep(3)
-    print('"Shit"')
+    print("You stand up and move towards the said direction")
+    print("...")
+    print('"Can I join you?"')
     time.sleep(1)
-    print("You look around and move towards the center of the room.")
-    print("It has a small pedestal in the middle and two doors across the room.")
-    time.sleep(1)
-    print("You move slowly towards the pedestal.")
-    time.sleep(2)
-    print("""There is something written
-    ...""")
-    time.sleep(1)
-    game_scene = questions(game_scene)
 
-while game_scene == 6:
-    print("You here the doors click, they may be open now")
-    time.sleep(2)
-    doortwo = input("What door do you wanna choose? (Left or Right)")
-    if doortwo == "left" or doortwo == "Left":
-        print("You take the left door")
-        print("You step through the door in the darkness")
-        game_scene = step_two(game_scene)
-    elif doortwo == "right" or doortwo == "Right":
-        print("You take the right door")
-        time.sleep(1)
-        print("You are in a long corridor, you see no end")
-        dead_restart() #if I use step_one here again, it does not work ? why ?
-    else:
-        print("Value not valid, please try again")
+    # decision
+    while game_scene == 0:
+        decision = input("Can they join you? (Yes or No)")
+        if decision == "yes" or decision == "Yes":
+            print('"Oh, thank god. Can you help me up?"')
+            time.sleep(1)
+            print("You move towards the voice and take their reaching hand, to pull them up.")
+            print("Even though your eyes are getting adjusted to the dark, you still see just the body outlines")
+            time.sleep(5)
+            print("They move fast to the said door, you rush after. Unsure if them joining you was the right decision")
+            time.sleep(5)
+            print(
+                "They reach the said door. Opening it without hesitation, you step right behind them through. Scared to be shut in.")
+            time.sleep(5)
+            print("The door closes behind you and you hear the door lock")
+            time.sleep(2)
+            print("You reach for the door, but do not find a handle")
+            time.sleep(2)
+            print('"There is no way back..."')
+            print('"We have here to doors, lets take each one and take a look"')
+            while game_scene == 0:
+                door = input('"Which one do you want? Right or left?"')
+                if door == "left" or door == "Left":
+                    print('"You take the right door and I the other one"')
+                    game_scene = step_one(game_scene)
+                elif door == "right" or door == "Right":
+                    print('"You take the left door and I the other one"')
+                    game_scene = 2
+                else:
+                    print("Value not valid, please try again")
 
-# last door room
-while game_scene == 9:
-    lastdoor = input("Do you wanna go through the door? (Yes or No)")
-    if lastdoor == "yes" or lastdoor == "Yes":
-        print("You step through the door")
-        time.sleep(2)
-        print("You are blended by the light")
-        time.sleep(2)
-        finished_game()
-    elif lastdoor == "no" or lastdoor == "NO":
-        print("You pass the door")
+        elif decision == "no" or decision == "No":
+            print("...")
+            time.sleep(1)
+            print(
+                "You hear something move closer. Thinking they are coming for you makes you move backwards, until you feel the wooden door.")
+            time.sleep(1)
+            print("As your hear them coming closer, you do not think and just open the door behind you")
+            print("You rush trough the door and shut it close")
+            time.sleep(2)
+            print("...")
+            print("The new room is dimly lit.")
+            time.sleep(1)
+            print("As you look around the new room you only see two doors across the room, other ways the room is empty")
+            game_scene = 7
+            while game_scene == 7:
+                doorone = input("Which one do you want? Right or left?")
+                if doorone == "left" or doorone == "Left":
+                    print("You take the left door")
+                    game_scene = step_one(game_scene)
+                elif doorone == "right" or doorone == "Right":
+                    print("You take the right door")
+                    game_scene = 2
+                else:
+                    print("Value not valid, please try again")
+        else:
+            print("Value not valid, please try again")
+
+    # Question room
+    while game_scene == 2:
         time.sleep(1)
-        print("...")
+        print("You open the door in front of you and step through.")
         time.sleep(1)
-        print("You continue into the darkness")
+        print("You try to hold the door open, but it is to heavy and shuts close behind you")
         time.sleep(3)
-        print("You are lost forever...")
-        dead_restart(name)
-    else:
-        print("Value not valid, please try again")
+        print('"Shit"')
+        time.sleep(1)
+        print("You look around and move towards the center of the room.")
+        print("It has a small pedestal in the middle and two doors across the room.")
+        time.sleep(1)
+        print("You move slowly towards the pedestal.")
+        time.sleep(2)
+        print("""There is something written
+        ...""")
+        time.sleep(1)
+        game_scene = questions(game_scene)
+
+    while game_scene == 6:
+        print("You here the doors click, they may be open now")
+        time.sleep(2)
+        doortwo = input("What door do you wanna choose? (Left or Right)")
+        if doortwo == "left" or doortwo == "Left":
+            print("You take the left door")
+            print("You step through the door in the darkness")
+            game_scene = step_two(game_scene)
+        elif doortwo == "right" or doortwo == "Right":
+            print("You take the right door")
+            time.sleep(1)
+            print("You are in a long corridor, you see no end")
+            dead_restart() #if I use step_one here again, it does not work ? why ?
+        else:
+            print("Value not valid, please try again")
+
+    # last door room
+    while game_scene == 9:
+        lastdoor = input("Do you wanna go through the door? (Yes or No)")
+        if lastdoor == "yes" or lastdoor == "Yes":
+            print("You step through the door")
+            time.sleep(2)
+            print("You are blended by the light")
+            time.sleep(2)
+            finished_game()
+        elif lastdoor == "no" or lastdoor == "NO":
+            print("You pass the door")
+            time.sleep(1)
+            print("...")
+            time.sleep(1)
+            print("You continue into the darkness")
+            time.sleep(3)
+            print("You are lost forever...")
+            dead_restart(name)
+        else:
+            print("Value not valid, please try again")

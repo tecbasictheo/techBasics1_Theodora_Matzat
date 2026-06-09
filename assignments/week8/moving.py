@@ -33,7 +33,7 @@ class PEGASUS(pygame.sprite.Sprite):
         self.rect.y = random.randrange(SCREEN_HEIGHT)
         self.image.fill((color_choice), special_flags=pygame.BLEND_ADD)
         self.speed = random.randint(1, 20)
-        self.glow_time = 0
+        #self.glow_time = 0
 
     def update(self):
         self.rect.x += self.speed

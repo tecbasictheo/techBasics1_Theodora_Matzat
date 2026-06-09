@@ -275,7 +275,7 @@ def game_loop():
     print("Type 'help' for a list of commands.")
 
     while True:
-        end_game() # does it work?
+        end_game()
         command = input("\n> ").strip().lower()
 
         match command.split():  # is there a way to do grammar correction like if item["name"].lower() == item_name.lower() and for spaces?
