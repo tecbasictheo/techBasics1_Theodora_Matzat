@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../python-crossy-game/.idea/python-crossy-game.iml" filepath="$PROJECT_DIR$/../python-crossy-game/.idea/python-crossy-game.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/techBasics1_Theodora_Matzat.iml" filepath="$PROJECT_DIR$/.idea/techBasics1_Theodora_Matzat.iml" />
     </modules>
   </component>
